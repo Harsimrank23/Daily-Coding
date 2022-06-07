@@ -16,10 +16,6 @@ public:
                 j++;
             }
         }
-        // cout<<i<<" "<<j<<" ";
-        // for(int k=0;k<ans.size();k++)
-        //     cout<<ans[k]<<" ";
-        
         while(i<m)
         {
             ans.push_back(nums1[i]);
@@ -27,7 +23,6 @@ public:
         }
         while(j<n)
         {
-            // cout<<j<<" ";
             ans.push_back(nums2[j]);
             j++;
         }
