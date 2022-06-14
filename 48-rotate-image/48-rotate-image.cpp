@@ -13,14 +13,6 @@ public:
                 }
             }
         }
-        for(int i=0;i<matrix.size();i++)
-        {
-            for(int j=0;j<matrix[i].size();j++)
-            {
-                cout<<matrix[i][j]<<" ";
-            }
-            cout<<endl;
-        }
         
         for(int i=0;i<matrix.size();i++)
         {
@@ -32,14 +24,6 @@ public:
                 matrix[i][matrix[i].size()-1-j]=temp;
                 j++;
             }
-        }
-        for(int i=0;i<matrix.size();i++)
-        {
-            for(int j=0;j<matrix[i].size();j++)
-            {
-                cout<<matrix[i][j]<<" ";
-            }
-            cout<<endl;
         }
     }
 };
