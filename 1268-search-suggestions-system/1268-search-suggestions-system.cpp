@@ -15,6 +15,7 @@ public:
             for(int i=0;i<3 && itr+i!=products.end();i++)
             {
                 string now=*(itr+i);
+                // cout<<now<<" "<<"h";
                 if(now.find(current))
                     break;
                 temp.push_back(now);
