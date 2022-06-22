@@ -51,7 +51,7 @@ class Solution
             {
                 if(slot[j]==-1)
                 {
-                    slot[j]=arr[];
+                    slot[j]=arr[i].id;
                     cntJobs++;
                     cntProfit+=arr[i].profit;
                     break;
