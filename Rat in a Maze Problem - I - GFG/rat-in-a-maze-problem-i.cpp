@@ -11,6 +11,9 @@ using namespace std;
 class Solution{
     public:
     vector<string>ans;
+    int di[4]={1,0,0,-1};
+    int dj[4]={0,-1,1,0};
+    
     void solve(int i,int j,vector<vector<int>> &m, int n,string s,vector<vector<int>>&vis)
     {
         if(i==n-1 && j==n-1)
@@ -19,30 +22,45 @@ class Solution{
             return;
         }
         
-        if(i+1<n && !vis[i+1][j] && m[i+1][j]==1)
+        string dir="DLRU";
+        
+        for(int ind=0;ind<4;ind++)
         {
-            vis[i][j]=1;
-            solve(i+1,j,m,n,s+'D',vis);
-            vis[i][j]=0;
+            int nexti=i+di[ind];
+            int nextj=j+dj[ind];
+            
+            if(nexti>=0 && nextj>=0 && nexti<n && nextj<n && !vis[nexti][nextj] && m[nexti][nextj]==1)
+            {
+                vis[i][j]=1;
+                solve(nexti,nextj,m,n,s+dir[ind],vis);
+                vis[i][j]=0;
+            }
         }
-        if(j-1>=0 && !vis[i][j-1] && m[i][j-1]==1)
-        {
-            vis[i][j]=1;
-            solve(i,j-1,m,n,s+'L',vis);
-            vis[i][j]=0;
-        }
-        if(j+1<n && !vis[i][j+1] && m[i][j+1]==1)
-        {
-            vis[i][j]=1;
-            solve(i,j+1,m,n,s+'R',vis);
-            vis[i][j]=0;
-        }
-        if(i-1>=0 && !vis[i-1][j] && m[i-1][j]==1)
-        {
-            vis[i][j]=1;
-            solve(i-1,j,m,n,s+'U',vis);
-            vis[i][j]=0;
-        }
+        
+        // if(i+1<n && !vis[i+1][j] && m[i+1][j]==1)
+        // {
+        //     vis[i][j]=1;
+        //     solve(i+1,j,m,n,s+'D',vis);
+        //     vis[i][j]=0;
+        // }
+        // if(j-1>=0 && !vis[i][j-1] && m[i][j-1]==1)
+        // {
+        //     vis[i][j]=1;
+        //     solve(i,j-1,m,n,s+'L',vis);
+        //     vis[i][j]=0;
+        // }
+        // if(j+1<n && !vis[i][j+1] && m[i][j+1]==1)
+        // {
+        //     vis[i][j]=1;
+        //     solve(i,j+1,m,n,s+'R',vis);
+        //     vis[i][j]=0;
+        // }
+        // if(i-1>=0 && !vis[i-1][j] && m[i-1][j]==1)
+        // {
+        //     vis[i][j]=1;
+        //     solve(i-1,j,m,n,s+'U',vis);
+        //     vis[i][j]=0;
+        // }
     }   
     
     vector<string> findPath(vector<vector<int>> &m, int n) {
