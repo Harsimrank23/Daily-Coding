@@ -17,7 +17,7 @@ public:
             counter++;
             if(i==s.length()-1 || s[i]!=s[i+1])
             {
-                res=res+to_string(counter)+s[i];
+                res+=to_string(counter)+s[i];
                 counter=0;
             }
         }
