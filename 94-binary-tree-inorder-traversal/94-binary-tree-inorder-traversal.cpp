@@ -11,18 +11,36 @@
  */
 class Solution {
 public:
-    
-    void inorderhelper(TreeNode* root,vector<int>&ans)
-    {
-        if(!root)
-            return;
-        inorderhelper(root->left,ans);
-        ans.push_back(root->val);
-        inorderhelper(root->right,ans);
-    }
+    // ------------------------------MORRIS--------------------------
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int>ans;
-        inorderhelper(root,ans);
-        return ans;
+        vector<int>inorder;
+        TreeNode * cur=root;
+        while(cur)
+        {
+            if(!cur->left)
+            {
+                inorder.push_back(cur->val);
+                cur=cur->right;
+            }
+            else
+            {
+                TreeNode * prev=cur->left;
+                while(prev->right && prev->right!=cur)
+                    prev=prev->right;
+                
+                if(!prev->right)
+                {
+                    prev->right=cur;
+                    cur=cur->left;
+                }
+                else
+                {
+                    prev->right=NULL;
+                    inorder.push_back(cur->val);
+                    cur=cur->right;
+                }
+            }
+        }
+        return inorder;
     }
 };
