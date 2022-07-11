@@ -11,17 +11,19 @@
  */
 class Solution {
 public:
-//     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-//         map<int,int>mp;
-//         for(int i=0;i<inorder.size();i++)
-//             mp[inorder[i]]=i;
-        
-//         TreeNode * root=helper(preorder,0,preorder.size()-1,inorder,0,inorder.size()-1,mp);
-        
-//         return root;
-//     }
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        int preStart = 0, preEnd = preorder.size() - 1;
+      int inStart = 0, inEnd = inorder.size() - 1;
+
+      map < int, int > mp;
+      for (int i = inStart; i <= inEnd; i++) 
+          mp[inorder[i]] = i;
+      
+
+      return constructTree(preorder, preStart, preEnd, inorder, inStart, inEnd, mp);
+}
     
-//     TreeNode * helper(vector<int>& porder, int pStart,int pEnd,vector<int>& inorder,int inStart,int inEnd,map<int,int>mp)
+//     TreeNode * helper(vector<int>& porder, int pStart,int pEnd,vector<int>& inorder,int inStart,int inEnd,map<int,int>&mp)
 //     {
 //         if(pStart>pEnd || inStart>inEnd)
 //             return NULL;
@@ -53,40 +55,5 @@ public:
   return root;
 }
 
-TreeNode * buildTree(vector < int > & preorder, vector < int > & inorder) {
-  int preStart = 0, preEnd = preorder.size() - 1;
-  int inStart = 0, inEnd = inorder.size() - 1;
 
-  map < int, int > mp;
-  for (int i = inStart; i <= inEnd; i++) {
-    mp[inorder[i]] = i;
-  }
-
-  return constructTree(preorder, preStart, preEnd, inorder, inStart, inEnd, mp);
-}
-    
-//     TreeNode* ok(vector<int>& pre,vector<int>& in,int &idx,int st,int ed,unordered_map<int,int> &mymap){
-//         if(idx>pre.size() || st>ed){
-//             return NULL;
-//         }
-        
-//         int mid=mymap[pre[idx]];
-        
-//         TreeNode* root = new TreeNode(pre[idx++]);
-        
-//         root->left=ok(pre,in,idx,st,mid-1,mymap);
-        
-//         root->right=ok(pre,in,idx,mid+1,ed,mymap);
-            
-//         return root;
-//     }
-//     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-//         unordered_map<int,int> mymap;
-        
-//         for(int i=0;i<inorder.size();i++){
-//             mymap[inorder[i]]=i;
-//         }
-//         int idx=0;
-//         return ok(preorder,inorder,idx,0,inorder.size()-1,mymap);
-//     }
 };
