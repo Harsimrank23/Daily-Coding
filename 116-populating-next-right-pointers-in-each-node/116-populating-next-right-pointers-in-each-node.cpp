@@ -47,24 +47,6 @@ public:
                 q.push(NULL);
         }
         return root;
-        
 
-// while(!q.empty()){
-// Node* tmp = q.front();
-// q.pop();
-// if(tmp){
-// tmp->next = q.front();
-// if(tmp->left != NULL){
-// q.push(tmp->left);
-// }
-// if(tmp->right != NULL){
-// q.push(tmp->right);
-// }
-// }
-// else if(tmp==NULL && !q.empty()){
-// q.push(NULL);
-// }
-// }
-// return root;
     }
 };
