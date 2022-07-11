@@ -23,37 +23,21 @@ public:
       return helper(preorder, preStart, preEnd, inorder, inStart, inEnd, mp);
 }
     
-    TreeNode * helper(vector<int>& porder, int pStart,int pEnd,vector<int>& inorder,int inStart,int inEnd,map<int,int>&mp)
-    {
-        if(pStart>pEnd || inStart>inEnd)
-            return NULL;
-        
-        TreeNode * root=new TreeNode(porder[pStart]);
-        int inroot=mp[root->val];
-        int numleft=inroot-inStart;
-        
-        root->left=helper(porder,pStart+1,pStart+numleft,inorder,inStart,inroot-1,mp);
-        
-        root->right=helper(porder,pStart+numleft+1,pEnd,inorder,inroot+1,inEnd,mp);
-        
-        return root;
-    }
+TreeNode * helper(vector<int>& porder, int pStart,int pEnd,vector<int>& inorder,int inStart,int inEnd,map<int,int>&mp)
+{
+    if(pStart>pEnd || inStart>inEnd)
+        return NULL;
+
+    TreeNode * root=new TreeNode(porder[pStart]);
+    int inroot=mp[root->val];
+    int numleft=inroot-inStart;
+
+    root->left=helper(porder,pStart+1,pStart+numleft,inorder,inStart,inroot-1,mp);
+
+    root->right=helper(porder,pStart+numleft+1,pEnd,inorder,inroot+1,inEnd,mp);
+
+    return root;
+}
     
-//     TreeNode * constructTree(vector < int > & preorder, int preStart, int preEnd, vector 
-//  < int > & inorder, int inStart, int inEnd, map < int, int > & mp) {
-//   if (preStart > preEnd || inStart > inEnd) return NULL;
-
-//   TreeNode * root = new TreeNode (preorder[preStart]);
-//   int elem = mp[root -> val];
-//   int nElem = elem - inStart;
-
-//   root -> left = constructTree(preorder, preStart + 1, preStart + nElem, inorder,
-//   inStart, elem - 1, mp);
-//   root -> right = constructTree(preorder, preStart + nElem + 1, preEnd, inorder, 
-//   elem + 1, inEnd, mp);
-
-//   return root;
-// }
-
 
 };
